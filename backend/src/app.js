@@ -8,10 +8,10 @@ app.get("/", (req, res) => {
   res.json({ message: "ok!" });
 });
 
-app.get("/mood", async (req, res) => {
+app.get("/mood", (req, res) => {
   db(moodQuery, req, res);
 });
 
-app.listen("8080", () => {
+app.listen(process.env.PORT || "8080", () => {
   console.log("Server started");
 });
