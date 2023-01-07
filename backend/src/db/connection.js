@@ -23,7 +23,8 @@ async function db(query, req, res) {
 
   connection.release();
 
-  res.send(rows);
+  //   res.send(rows);
+  res.status(200).json(rows);
 }
 
 export default db;
