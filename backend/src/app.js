@@ -14,5 +14,6 @@ app.get("/mood", (req, res) => {
 });
 
 app.listen(port, () => {
+  console.log("port", port);
   console.log("Server started");
 });
