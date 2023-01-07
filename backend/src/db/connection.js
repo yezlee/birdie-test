@@ -1,23 +1,28 @@
-import mysql from "mysql";
+import mysql from "mysql2/promise.js";
 import * as config from "../../config.js";
 
-const connection = mysql.createConnection({
+const pool = mysql.createPool({
   user: config.user,
   host: config.host,
   database: config.database,
   password: config.password,
-  port: config.port,
 });
 
-connection.connect((e) => {
-  if (e) throw e;
-  console.log("Connect!!!!!!");
+const getCon = async () => {
+  return await pool.getConnection(async function (err, connection) {
+    if (err) throw err;
+    connection;
+  });
+};
 
-  connection.query(
-    "SELECT * FROM events WHERE care_recipient_id = 'ad3512a6-91b1-4d7d-a005-6f8764dd0111' AND event_type = 'mood_observation' ORDER BY timestamp DESC;",
-    function (err, result, fields) {
-      if (err) throw err;
-      console.log(result);
-    }
-  );
-});
+// function for running query
+async function db(query, req, res) {
+  const connection = await getCon();
+  let [rows, fields] = await connection.query(query, []);
+
+  connection.release();
+
+  res.send(rows);
+}
+
+export default db;
