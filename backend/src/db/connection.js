@@ -16,15 +16,14 @@ const getCon = async () => {
   });
 };
 
-// function for running query
-async function db(query, req, res) {
+// function for running query and returning data
+async function db(query) {
   const connection = await getCon();
   let [rows, fields] = await connection.query(query, []);
 
   connection.release();
 
-  //   res.send(rows);
-  res.status(200).json(rows);
+  return rows;
 }
 
 export default db;

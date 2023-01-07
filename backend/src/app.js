@@ -1,6 +1,4 @@
 import express from "express";
-import { moodQuery } from "./model/query.js";
-import db from "./db/connection.js";
 import { pingController } from "./controller/controller.js";
 
 const app = express();
