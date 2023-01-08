@@ -1,13 +1,17 @@
 import * as express from "express";
-import { getMoodQuery } from "../model/query.js";
+import {
+  getAllEvent,
+  getMoodObservation,
+  getAllIntakeObservation,
+  getGeneralObservation,
+  getAllHealthObservation,
+} from "../model/query.js";
 import db from "../db/connection.js";
 
 export const pingController = express.Router();
 
-pingController.get("/mood", async (req, res) => {
-  const data = await db(getMoodQuery);
-  console.log(data);
-
+// A Function for try and catch
+function tryCatch(data, req, res) {
   try {
     data.length > 0
       ? res.status(200).json(data)
@@ -16,4 +20,44 @@ pingController.get("/mood", async (req, res) => {
     console.error("There's an error", e.message);
     next(e);
   }
+}
+
+// getAllEvent
+pingController.get("/all", async (req, res) => {
+  const data = await db(getAllEvent);
+
+  // try, catch
+  tryCatch(data, req, res);
+});
+
+// getMoodObservation
+pingController.get("/mood", async (req, res) => {
+  const data = await db(getMoodObservation);
+
+  // try, catch
+  tryCatch(data, req, res);
+});
+
+// getAllIntakeObservation
+pingController.get("/intake", async (req, res) => {
+  const data = await db(getAllIntakeObservation);
+
+  // try, catch
+  tryCatch(data, req, res);
+});
+
+// getGeneralObservation
+pingController.get("/general", async (req, res) => {
+  const data = await db(getGeneralObservation);
+
+  // try, catch
+  tryCatch(data, req, res);
+});
+
+// getAllHealthObservation
+pingController.get("/health", async (req, res) => {
+  const data = await db(getAllHealthObservation);
+
+  // try, catch
+  tryCatch(data, req, res);
 });

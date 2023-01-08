@@ -16,7 +16,7 @@ const getCon = async () => {
   });
 };
 
-// function for running query and returning data
+// A function for running query and returning data
 async function db(query) {
   const connection = await getCon();
   let [rows, fields] = await connection.query(query, []);
