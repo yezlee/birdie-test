@@ -11,7 +11,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function HeaderComponent() {
+export default function Header() {
   return (
     <Disclosure as="nav" className="bg-birdie_dark_blue">
       {({ open }) => (

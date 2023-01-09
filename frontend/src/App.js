@@ -1,4 +1,5 @@
-import HeaderComponent from "./components/Header.js";
+import Header from "./components/Header.js";
+import Mood from "./components/Mood.js";
 
 function App() {
   // fetch("http://localhost:8080/mood")
@@ -13,7 +14,8 @@ function App() {
 
   return (
     <div>
-      <HeaderComponent />
+      <Header />
+      <Mood />
     </div>
   );
 }
