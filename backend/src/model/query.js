@@ -39,7 +39,7 @@ ORDER BY timestamp;`;
 export const getAllMedication = `        
 SELECT payload 
 FROM events 
-WHERE (care_recipient_id = 'e3e2bff8-d318-4760-beea-841a75f00227' OR care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d')
+WHERE (care_recipient_id = 'e3e2bff8-d318-4760-beea-841a75f00227' OR care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d' OR care_recipient_id ='ad3512a6-91b1-4d7d-a005-6f8764dd0111')
 AND (event_type = 'medication_schedule_created'
 OR event_type = 'medication_schedule_updated'
 OR event_type = 'regular_medication_taken'
@@ -53,7 +53,7 @@ SELECT payload
 FROM events 
 WHERE timestamp 
 BETWEEN CAST(? AS DATE) AND CAST(? AS DATE) 
-AND care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d' 
+AND (care_recipient_id = 'e3e2bff8-d318-4760-beea-841a75f00227' OR care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d')
 AND (event_type = 'medication_schedule_created'
 OR event_type = 'medication_schedule_updated'
 OR event_type = 'regular_medication_taken'
