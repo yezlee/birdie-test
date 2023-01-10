@@ -1,8 +1,9 @@
 import { Disclosure } from "@headlessui/react";
+import { Link } from "react-router-dom";
 
 const navigation = [
   { name: "Dashboard", href: "#", current: true },
-  { name: "Mood", href: "#", current: false },
+  { name: "Mood", href: "/mood", current: false },
   { name: "Projects", href: "#", current: false },
   { name: "Calendar", href: "#", current: false },
 ];
@@ -22,13 +23,15 @@ export default function Header() {
           <div className="relative flex h-20 items-center justify-between">
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               {/* logo */}
-              <div className="flex flex-shrink-0 items-center">
-                <img
-                  className="h-12 w-auto lg:block"
-                  src="https://i.postimg.cc/0yj4gHyD/birdie-logo.png"
-                  alt="Your Company"
-                />
-              </div>
+              <Link to="/">
+                <div className="flex flex-shrink-0 items-center">
+                  <img
+                    className="h-12 w-auto lg:block"
+                    src="https://i.postimg.cc/0yj4gHyD/birdie-logo.png"
+                    alt="Your Company"
+                  />
+                </div>
+              </Link>
               {/* navigation menu */}
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex space-x-4">

@@ -63,7 +63,7 @@ export default function Mood() {
 
   return (
     <div>
-      <div className="h-1/3 w-1/3">
+      <div className="">
         <Pie className="" data={moodDataForDoughnut} />
       </div>
     </div>

@@ -1,26 +1,21 @@
 import Header from "./components/Header.js";
-import Medication from "./components/Medication.js";
-import Mood from "./components/Mood.js";
+// import Router from "./routes/Router.js";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./screen/Main.js";
+import Mood from "./components/Mood.js";
+import Medication from "./components/Medication.js";
 
 function App() {
-  // fetch("http://localhost:8080/mood")
-  //   .then((response) => response.json())
-  //   .then((data) => console.log(data))
-  //   .catch((e) => console.log("error"));
-
-  // fetch("https://birdie-care-recipients.onrender.com/mood")
-  //   .then((response) => response.json())
-  //   .then((data) => console.log(data))
-  //   .catch((e) => console.error("There's an error", e.message));
-
   return (
-    <div>
+    <BrowserRouter>
       <Header />
-      <Main />
-      {/* <Mood /> */}
-      {/* <Medication /> */}
-    </div>
+
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/mood" element={<Mood />} />
+        <Route path="/medication" element={<Medication />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
