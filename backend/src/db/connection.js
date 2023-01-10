@@ -17,13 +17,12 @@ const getCon = async () => {
 };
 
 // A function for running query and returning data
-async function db(query) {
+async function db(query, params) {
   const connection = await getCon();
-  let [rows, fields] = await connection.query(query, []);
+  let [rows, fields] = await connection.query(query, params);
 
   connection.release();
-
-  return rows;
+  return [rows, fields];
 }
 
 export default db;

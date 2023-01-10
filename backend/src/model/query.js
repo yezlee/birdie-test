@@ -9,7 +9,7 @@ ORDER BY timestamp;`;
 export const getMoodObservation = `
 SELECT payload
 FROM events
-WHERE care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d'
+WHERE (care_recipient_id = 'e3e2bff8-d318-4760-beea-841a75f00227' OR care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d')
 AND event_type = 'mood_observation'
 ORDER BY timestamp;`;
 
@@ -39,7 +39,21 @@ ORDER BY timestamp;`;
 export const getAllMedication = `        
 SELECT payload 
 FROM events 
-WHERE care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d' 
+WHERE (care_recipient_id = 'e3e2bff8-d318-4760-beea-841a75f00227' OR care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d')
+AND (event_type = 'medication_schedule_created'
+OR event_type = 'medication_schedule_updated'
+OR event_type = 'regular_medication_taken'
+OR event_type = 'regular_medication_partially_taken'
+OR event_type = 'regular_medication_maybe_taken'
+OR event_type = 'regular_medication_not_taken')
+ORDER BY timestamp;`;
+
+export const getAllMedicationByDate = `        
+SELECT payload 
+FROM events 
+WHERE timestamp 
+BETWEEN CAST(? AS DATE) AND CAST(? AS DATE) 
+AND care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d' 
 AND (event_type = 'medication_schedule_created'
 OR event_type = 'medication_schedule_updated'
 OR event_type = 'regular_medication_taken'
