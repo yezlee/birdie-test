@@ -1,26 +1,24 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Doughnut } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
+import { FetchDataFunc } from "../helper/FetchDataFunc";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-function Mood() {
-  // fetch("http://localhost:8080/mood")
-  //   .then((response) => response.json())
-  //   .then((data) => console.log(data))
-  //   .catch((e) => console.log("error"));
-
+export default function Mood() {
   const [fetchData, setfetchData] = useState([]);
 
   useEffect(() => {
-    fetch("https://birdie-care-recipients.onrender.com/mood")
-      .then((response) => response.json())
-      .then((result) => setfetchData(result))
-      .catch((e) => console.error("There's an error", e.message));
+    const fetchResponse = async () => {
+      const response = await FetchDataFunc("http://localhost:8080/mood");
+      setfetchData(response);
+    };
+
+    fetchResponse();
   }, []);
 
   let moodData = [];
-  moodData = fetchData.map((e) => e.payload.mood);
+  moodData = fetchData.map((e) => e.mood);
 
   function countMood() {
     let happyCount = 0;
@@ -40,7 +38,6 @@ function Mood() {
     return [happyCount, okayCount, sadCount];
   }
 
-  console.log("countMood() test : ", countMood());
   const moodDataForDoughnut = {
     labels: ["Happy", "Okay", "Sad"],
     datasets: [
@@ -65,10 +62,8 @@ function Mood() {
   return (
     <div>
       <div className="h-1/3 w-1/3">
-        <Doughnut className="" data={moodDataForDoughnut} />
+        <Pie className="" data={moodDataForDoughnut} />
       </div>
     </div>
   );
 }
-
-export default Mood;

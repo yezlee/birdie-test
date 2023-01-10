@@ -1,4 +1,5 @@
 import Header from "./components/Header.js";
+import Medication from "./components/Medication.js";
 import Mood from "./components/Mood.js";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     <div>
       <Header />
       <Mood />
+      <Medication />
     </div>
   );
 }
