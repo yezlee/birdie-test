@@ -10,7 +10,9 @@ export default function Mood() {
 
   useEffect(() => {
     const fetchResponse = async () => {
-      const response = await FetchDataFunc("http://localhost:8080/mood");
+      const response = await FetchDataFunc(
+        "https://birdie-care-recipients.onrender.com/mood"
+      );
       setfetchData(response);
     };
 

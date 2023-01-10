@@ -1,6 +1,7 @@
 import Header from "./components/Header.js";
 import Medication from "./components/Medication.js";
 import Mood from "./components/Mood.js";
+import Main from "./screen/Main.js";
 
 function App() {
   // fetch("http://localhost:8080/mood")
@@ -16,8 +17,9 @@ function App() {
   return (
     <div>
       <Header />
-      <Mood />
-      <Medication />
+      <Main />
+      {/* <Mood /> */}
+      {/* <Medication /> */}
     </div>
   );
 }

@@ -13,15 +13,18 @@ function classNames(...classes) {
 
 export default function Header() {
   return (
-    <Disclosure as="nav" className="bg-birdie_dark_blue">
+    <Disclosure
+      as="nav"
+      className="bg-birdie_dark_blue absolute inset-x-0 top-0 w-full"
+    >
       {({ open }) => (
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <div className="relative flex h-16 items-center justify-between">
+          <div className="relative flex h-20 items-center justify-between">
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               {/* logo */}
               <div className="flex flex-shrink-0 items-center">
                 <img
-                  className="h-10 w-auto lg:block"
+                  className="h-12 w-auto lg:block"
                   src="https://i.postimg.cc/0yj4gHyD/birdie-logo.png"
                   alt="Your Company"
                 />
@@ -37,7 +40,7 @@ export default function Header() {
                         item.current
                           ? "text-birdie_light_blue "
                           : "text-blue-100   hover:bg-birdie_light_dark_blue",
-                        "px-3 py-2 rounded-md text-m text-white-300 font-medium"
+                        "px-3 py-2 rounded-md text-lg text-white-300 font-thin"
                       )}
                       aria-current={item.current ? "page" : undefined}
                     >

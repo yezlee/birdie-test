@@ -22,7 +22,7 @@ export default function Medication() {
   useEffect(() => {
     const fetchResponse = async () => {
       const response = await FetchDataFunc(
-        `http://localhost:8080/medication2/?from=${_format_date(
+        `https://birdie-care-recipients.onrender.com/medication2/?from=${_format_date(
           startDate
         )}&to=${_format_date(endDate)}`
         // ` http://localhost:8080/medication2/?from=2019-04-23&to=2019-04-28`
