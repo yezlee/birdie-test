@@ -5,6 +5,7 @@ import {
   getAllIntakeObservation,
   getGeneralObservation,
   getAllHealthObservation,
+  getAllMedication,
 } from "../model/query.js";
 import db from "../db/connection.js";
 
@@ -57,6 +58,14 @@ pingController.get("/general", async (req, res) => {
 // getAllHealthObservation
 pingController.get("/health", async (req, res) => {
   const data = await db(getAllHealthObservation);
+
+  // try, catch
+  tryCatch(data, req, res);
+});
+
+// getAllMedication
+pingController.get("/medication", async (req, res) => {
+  const data = await db(getAllMedication);
 
   // try, catch
   tryCatch(data, req, res);
