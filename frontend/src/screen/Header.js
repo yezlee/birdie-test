@@ -2,10 +2,13 @@ import { Disclosure } from "@headlessui/react";
 import { Link } from "react-router-dom";
 
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
+  { name: "Dashboard", href: "/", current: true },
+  { name: "Intake", href: "/intake", current: false },
   { name: "Mood", href: "/mood", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
+  { name: "Medication", href: "/medication", current: false },
+  { name: "Health", href: "/health", current: false },
+  { name: "General Note", href: "/general", current: false },
+  { name: "All Data", href: "/all", current: false },
 ];
 
 function classNames(...classes) {
