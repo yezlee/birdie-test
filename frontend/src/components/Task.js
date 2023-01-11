@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { FetchDataFunc } from "../helper/FetchDataFunc";
-import _format_date from "../helper/_format_date";
-import _date_Picker from "../helper/_date_picker";
 import MUIDataTable from "mui-datatables";
-import _date_to_GB_format from "../helper/_date_to_GB_format";
 
-export default function Task() {
+import {
+  _date_to_GB_format,
+  _format_date,
+  _date_Picker,
+  _fetch_data_func,
+} from "../helper";
+
+export function Task() {
   const [fetchData, setfetchData] = useState([]);
   const [startDate, setStartDate] = useState(new Date("2019/04/23"));
   const [endDate, setEndDate] = useState(new Date("2019/04/27"));
 
   useEffect(() => {
     const fetchResponse = async () => {
-      const response = await FetchDataFunc(
+      const response = await _fetch_data_func(
         `https://birdie-care-recipients.onrender.com/task_by_date?from=${_format_date(
           startDate
         )}&to=${_format_date(endDate)}`

@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { FetchDataFunc } from "../helper/FetchDataFunc";
-import _date_Picker from "../helper/_date_picker";
 import "react-datepicker/dist/react-datepicker.css";
-import _format_date from "../helper/_format_date";
-import _date_to_string from "../helper/_date_to_string";
+
+import {
+  _date_to_string,
+  _format_date,
+  _date_Picker,
+  _fetch_data_func,
+} from "../helper";
 
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
+
 import "react-vertical-timeline-component/style.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -16,14 +20,14 @@ import {
   faHandHoldingHand,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function GeneralNote() {
+export function GeneralNote() {
   const [fetchData, setfetchData] = useState([]);
   const [startDate, setStartDate] = useState(new Date("2019/04/23"));
   const [endDate, setEndDate] = useState(new Date("2019/04/24"));
 
   useEffect(() => {
     const fetchResponse = async () => {
-      const response = await FetchDataFunc(
+      const response = await _fetch_data_func(
         `https://birdie-care-recipients.onrender.com/general_by_date?from=${_format_date(
           startDate
         )}&to=${_format_date(endDate)}`

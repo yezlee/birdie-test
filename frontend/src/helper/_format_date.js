@@ -1,5 +1,5 @@
 // Change date from date-picker to yyyy-mm-dd format for getting query
-export default function _format_date(date) {
+export function _format_date(date) {
   let year = "";
   let month = "";
   let day = "";

@@ -1,4 +1,4 @@
-export async function FetchDataFunc(apiURL) {
+export async function _fetch_data_func(apiURL) {
   const fetchApiResponse = await fetch(apiURL, {
     method: "GET",
   });

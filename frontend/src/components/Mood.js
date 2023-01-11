@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
-import { FetchDataFunc } from "../helper/FetchDataFunc";
-import _date_Picker from "../helper/_date_picker";
 import "react-datepicker/dist/react-datepicker.css";
-import _format_date from "../helper/_format_date";
+
+import { _format_date, _date_Picker, _fetch_data_func } from "../helper";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export default function Mood() {
+export function Mood() {
   const [fetchData, setfetchData] = useState([]);
   const [startDate, setStartDate] = useState(new Date("2019/04/23"));
   const [endDate, setEndDate] = useState(new Date("2019/05/10"));
 
   useEffect(() => {
     const fetchResponse = async () => {
-      const response = await FetchDataFunc(
+      const response = await _fetch_data_func(
         `https://birdie-care-recipients.onrender.com/mood_by_date?from=${_format_date(
           startDate
         )}&to=${_format_date(endDate)}`

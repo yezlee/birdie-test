@@ -2,12 +2,15 @@ import Header from "./screen/Header.js";
 // import Router from "./routes/Router.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./screen/Main.js";
-import Mood from "./components/Mood.js";
-import Medication from "./components/Medication.js";
-import Intake from "./components/Intake.js";
-import Health from "./components/Health.js";
-import GeneralNote from "./components/GeneralNote.js";
-import Task from "./components/Task.js";
+
+import {
+  GeneralNote,
+  Health,
+  Intake,
+  Medication,
+  Mood,
+  Task,
+} from "./components";
 
 function App() {
   return (
