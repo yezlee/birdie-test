@@ -12,6 +12,7 @@ module.exports = {
         birdie_skyblue: "#66d3fb",
         birdie_melon: "#54c3bf",
         birdie_melon_shadow: "#b4dedd",
+        birdie_melon_light: "#c1eceb",
         birdie_red_orange: "#ff4f4e",
         birdie_purple: "#8c51e3",
         birdie_yellow: "#f1a92b",
