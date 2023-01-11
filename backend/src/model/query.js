@@ -30,10 +30,29 @@ AND (event_type = 'fluid_intake_observation'
 OR event_type = 'food_intake_observation')
 ORDER BY timestamp;`;
 
+export const getAllIntakeObservationByDate = `
+SELECT payload
+FROM events
+WHERE care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d'
+AND timestamp 
+BETWEEN CAST(? AS DATE) AND CAST(? AS DATE) 
+AND (event_type = 'fluid_intake_observation'
+OR event_type = 'food_intake_observation')
+ORDER BY timestamp;`;
+
 export const getGeneralObservation = `
 SELECT payload
 FROM events
 WHERE care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d'
+AND event_type = 'general_observation'
+ORDER BY timestamp;`;
+
+export const getGeneralObservationByDate = `        
+SELECT payload
+FROM events
+WHERE timestamp
+BETWEEN CAST(? AS DATE) AND CAST(? AS DATE)
+AND care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d'
 AND event_type = 'general_observation'
 ORDER BY timestamp;`;
 

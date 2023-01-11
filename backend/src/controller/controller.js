@@ -8,6 +8,8 @@ import {
   getAllHealthObservation,
   getAllMedication,
   getAllMedicationByDate,
+  getAllIntakeObservationByDate,
+  getGeneralObservationByDate,
 } from "../model/query.js";
 import db from "../db/connection.js";
 
@@ -58,9 +60,27 @@ pingController.get("/intake", async (req, res) => {
   tryCatch(data[0], req, res);
 });
 
+// getAllIntakeObservationByDate
+pingController.get("/intake_by_date", async (req, res) => {
+  const { from, to } = req.query;
+  const data = await db(getAllIntakeObservationByDate, [from, to]);
+
+  // try, catch
+  tryCatch(data[0], req, res);
+});
+
 // getGeneralObservation
 pingController.get("/general", async (req, res) => {
   const data = await db(getGeneralObservation);
+
+  // try, catch
+  tryCatch(data[0], req, res);
+});
+
+// getGeneralObservationByDate
+pingController.get("/general_by_date", async (req, res) => {
+  const { from, to } = req.query;
+  const data = await db(getGeneralObservationByDate, [from, to]);
 
   // try, catch
   tryCatch(data[0], req, res);
