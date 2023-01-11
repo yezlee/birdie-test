@@ -3,6 +3,7 @@ import { FetchDataFunc } from "../helper/FetchDataFunc";
 import _format_date from "../helper/_format_date";
 import _date_Picker from "../helper/_date_picker";
 import MUIDataTable from "mui-datatables";
+import _date_to_GB_format from "../helper/_date_to_GB_format";
 
 export default function Intake() {
   const [fetchData, setfetchData] = useState([]);
@@ -31,13 +32,21 @@ export default function Intake() {
     for (let i = 0; i < intakeData.length; i++) {
       intakeData[i].event_type === "food_intake_observation"
         ? intakeDataForTable.push([
-            intakeData[i].timestamp.slice(0, 10),
+            _date_to_GB_format(
+              intakeData[i].timestamp.slice(0, 4),
+              intakeData[i].timestamp.slice(5, 7),
+              intakeData[i].timestamp.slice(8, 10)
+            ),
             intakeData[i].meal,
             intakeData[i].timestamp.slice(4, 5),
             intakeData[i].note,
           ])
         : intakeDataForTable.push([
-            intakeData[i].timestamp.slice(0, 10),
+            _date_to_GB_format(
+              intakeData[i].timestamp.slice(0, 4),
+              intakeData[i].timestamp.slice(5, 7),
+              intakeData[i].timestamp.slice(8, 10)
+            ),
             intakeData[i].fluid === "regular" || "caffeinated"
               ? intakeData[i].fluid + " (fluid)"
               : intakeData[i].fluid,
