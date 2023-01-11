@@ -90,3 +90,12 @@ OR event_type = 'regular_medication_taken'
 OR event_type = 'regular_medication_partially_taken'
 OR event_type = 'regular_medication_not_taken')
 ORDER BY timestamp;`;
+
+export const getTaskCompletedByDate = `
+SELECT payload
+FROM events
+WHERE timestamp 
+BETWEEN CAST(? AS DATE) AND CAST(? AS DATE) 
+AND care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d'
+AND event_type = 'task_completed'
+ORDER BY timestamp;`;

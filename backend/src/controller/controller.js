@@ -10,6 +10,7 @@ import {
   getAllMedicationByDate,
   getAllIntakeObservationByDate,
   getGeneralObservationByDate,
+  getTaskCompletedByDate,
 } from "../model/query.js";
 import db from "../db/connection.js";
 
@@ -107,6 +108,15 @@ pingController.get("/medication", async (req, res) => {
 pingController.get("/medication_by_date", async (req, res) => {
   const { from, to } = req.query;
   const data = await db(getAllMedicationByDate, [from, to]);
+
+  // try, catch
+  tryCatch(data[0], req, res);
+});
+
+// getTaskCompletedByDate
+pingController.get("/task_by_date", async (req, res) => {
+  const { from, to } = req.query;
+  const data = await db(getTaskCompletedByDate, [from, to]);
 
   // try, catch
   tryCatch(data[0], req, res);
