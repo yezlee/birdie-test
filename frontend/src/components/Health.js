@@ -3,6 +3,7 @@ import { FetchDataFunc } from "../helper/FetchDataFunc";
 import _format_date from "../helper/_format_date";
 import _date_Picker from "../helper/_date_picker";
 import MUIDataTable from "mui-datatables";
+import _date_to_GB_format from "../helper/_date_to_GB_format";
 
 export default function Health() {
   const [fetchData, setfetchData] = useState([]);
@@ -26,16 +27,26 @@ export default function Health() {
   healthData = fetchData.map((e) => e);
 
   let healthDataForTable = [];
-
+  //_date_to_GB_format
   function formatHealthData() {
     for (let i = 0; i < healthData.length; i++) {
       healthData[i].event_type === "physical_health_observation"
         ? healthDataForTable.push([
-            healthData[i].timestamp.slice(0, 10),
+            _date_to_GB_format(
+              healthData[i].timestamp.slice(0, 4),
+              healthData[i].timestamp.slice(5, 7),
+              healthData[i].timestamp.slice(8, 10)
+            ),
+            healthData[i].event_type,
             healthData[i].note,
           ])
         : healthDataForTable.push([
-            healthData[i].timestamp.slice(0, 10),
+            _date_to_GB_format(
+              healthData[i].timestamp.slice(0, 4),
+              healthData[i].timestamp.slice(5, 7),
+              healthData[i].timestamp.slice(8, 10)
+            ),
+            healthData[i].event_type,
             healthData[i].note,
           ]);
     }
@@ -48,6 +59,14 @@ export default function Health() {
     {
       name: "date",
       label: "DATE",
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
+    {
+      name: "type",
+      label: "Type",
       options: {
         filter: true,
         sort: true,
