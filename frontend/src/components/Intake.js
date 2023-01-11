@@ -13,7 +13,7 @@ export default function Intake() {
   useEffect(() => {
     const fetchResponse = async () => {
       const response = await FetchDataFunc(
-        `http://localhost:8080/intake_by_date?from=${_format_date(
+        `https://birdie-care-recipients.onrender.com/intake_by_date?from=${_format_date(
           startDate
         )}&to=${_format_date(endDate)}`
       );

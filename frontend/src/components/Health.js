@@ -13,7 +13,7 @@ export default function Health() {
   useEffect(() => {
     const fetchResponse = async () => {
       const response = await FetchDataFunc(
-        `http://localhost:8080/health_by_date?from=${_format_date(
+        `https://birdie-care-recipients.onrender.com/health_by_date?from=${_format_date(
           startDate
         )}&to=${_format_date(endDate)}`
       );
@@ -27,7 +27,7 @@ export default function Health() {
   healthData = fetchData.map((e) => e);
 
   let healthDataForTable = [];
-  //_date_to_GB_format
+
   function formatHealthData() {
     for (let i = 0; i < healthData.length; i++) {
       healthData[i].event_type === "physical_health_observation"

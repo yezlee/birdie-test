@@ -24,7 +24,7 @@ export default function GeneralNote() {
   useEffect(() => {
     const fetchResponse = async () => {
       const response = await FetchDataFunc(
-        `http://localhost:8080/general_by_date?from=${_format_date(
+        `https://birdie-care-recipients.onrender.com/general_by_date?from=${_format_date(
           startDate
         )}&to=${_format_date(endDate)}`
       );
