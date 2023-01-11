@@ -72,7 +72,7 @@ export default function Main() {
           </Link>
 
           {/* Genaral note */}
-          <Link to="/genaral">
+          <Link to="/general">
             <div className="p-10 flex flex-col items-center text-center group    md:lg:xl:border-r hover:bg-slate-50 cursor-pointer">
               <span className="p-5 rounded-full bg-birdie_skyblue text-white shadow-lg shadow-sky-200">
                 <FontAwesomeIcon className="h-10 w-10" icon={faNoteSticky} />
