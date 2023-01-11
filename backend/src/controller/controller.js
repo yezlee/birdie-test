@@ -2,6 +2,7 @@ import * as express from "express";
 import {
   getAllEvent,
   getMoodObservation,
+  getMoodByDate,
   getAllIntakeObservation,
   getGeneralObservation,
   getAllHealthObservation,
@@ -40,6 +41,15 @@ pingController.get("/mood", async (req, res) => {
   tryCatch(data[0], req, res);
 });
 
+// getMoodByDate
+pingController.get("/mood_by_date", async (req, res) => {
+  const { from, to } = req.query;
+  const data = await db(getMoodByDate, [from, to]);
+
+  // try, catch
+  tryCatch(data[0], req, res);
+});
+
 // getAllIntakeObservation
 pingController.get("/intake", async (req, res) => {
   const data = await db(getAllIntakeObservation);
@@ -73,15 +83,7 @@ pingController.get("/medication", async (req, res) => {
 });
 
 // getAllMedicationByDate
-// pingController.get("/medication2", async (req, res) => {
-//   const data = await db(getAllMedicationByDate, ["2019-04-23", "2019-04-25"]);
-
-//   // try, catch
-//   tryCatch(data[0], req, res);
-// });
-
-// getAllMedicationByDate;
-pingController.get("/medication2", async (req, res) => {
+pingController.get("/medication_by_date", async (req, res) => {
   const { from, to } = req.query;
   const data = await db(getAllMedicationByDate, [from, to]);
 

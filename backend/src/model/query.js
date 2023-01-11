@@ -13,6 +13,15 @@ WHERE (care_recipient_id = 'e3e2bff8-d318-4760-beea-841a75f00227' OR care_recipi
 AND event_type = 'mood_observation'
 ORDER BY timestamp;`;
 
+export const getMoodByDate = `        
+SELECT payload 
+FROM events 
+WHERE timestamp 
+BETWEEN CAST(? AS DATE) AND CAST(? AS DATE) 
+AND (care_recipient_id = 'e3e2bff8-d318-4760-beea-841a75f00227' OR care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d')
+AND event_type = 'mood_observation'
+ORDER BY timestamp;`;
+
 export const getAllIntakeObservation = `
 SELECT payload
 FROM events
