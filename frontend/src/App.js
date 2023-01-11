@@ -1,9 +1,13 @@
-import Header from "./components/Header.js";
+import Header from "./screen/Header.js";
 // import Router from "./routes/Router.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./screen/Main.js";
 import Mood from "./components/Mood.js";
 import Medication from "./components/Medication.js";
+import Intake from "./components/Intake.js";
+import Health from "./components/Health.js";
+import GeneralNote from "./components/GeneralNote.js";
+import AllData from "./components/AllData.js";
 
 function App() {
   return (
@@ -12,8 +16,12 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/intake" element={<Intake />} />
         <Route path="/mood" element={<Mood />} />
         <Route path="/medication" element={<Medication />} />
+        <Route path="/health" element={<Health />} />
+        <Route path="/general" element={<GeneralNote />} />
+        <Route path="/all" element={<AllData />} />
       </Routes>
     </BrowserRouter>
   );
