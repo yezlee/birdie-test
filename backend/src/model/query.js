@@ -56,10 +56,12 @@ AND care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d'
 AND event_type = 'general_observation'
 ORDER BY timestamp;`;
 
-export const getAllHealthObservation = `
+export const getAllHealthObservationByDate = `
 SELECT payload
 FROM events
-WHERE care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d'
+WHERE timestamp
+BETWEEN CAST(? AS DATE) AND CAST(? AS DATE)
+AND care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d'
 AND (event_type = 'physical_health_observation'
 OR event_type = 'mental_health_observation')
 ORDER BY timestamp;`;

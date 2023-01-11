@@ -5,7 +5,7 @@ import {
   getMoodByDate,
   getAllIntakeObservation,
   getGeneralObservation,
-  getAllHealthObservation,
+  getAllHealthObservationByDate,
   getAllMedication,
   getAllMedicationByDate,
   getAllIntakeObservationByDate,
@@ -86,9 +86,10 @@ pingController.get("/general_by_date", async (req, res) => {
   tryCatch(data[0], req, res);
 });
 
-// getAllHealthObservation
-pingController.get("/health", async (req, res) => {
-  const data = await db(getAllHealthObservation);
+// getAllHealthObservationByDate
+pingController.get("/health_by_date", async (req, res) => {
+  const { from, to } = req.query;
+  const data = await db(getAllHealthObservationByDate, [from, to]);
 
   // try, catch
   tryCatch(data[0], req, res);
