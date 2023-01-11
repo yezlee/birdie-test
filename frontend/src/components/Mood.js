@@ -11,7 +11,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export default function Mood() {
   const [fetchData, setfetchData] = useState([]);
   const [startDate, setStartDate] = useState(new Date("2019/04/23"));
-  const [endDate, setEndDate] = useState(new Date("2019/04/26"));
+  const [endDate, setEndDate] = useState(new Date("2019/05/10"));
 
   useEffect(() => {
     const fetchResponse = async () => {
@@ -73,7 +73,7 @@ export default function Mood() {
       {/* calling function _date_Picker from helper */}
       {_date_Picker(startDate, endDate, setStartDate, setEndDate)}
 
-      <div className="h-2/5 w-2/5">
+      <div className="h-1/3 w-1/3">
         <Pie className="" data={moodDataForDoughnut} />
       </div>
     </div>
