@@ -88,7 +88,7 @@ export default function Main() {
           </Link>
 
           {/* All data */}
-          <Link to="/all">
+          <Link to="/task">
             <div className="p-10 flex flex-col items-center text-center group hover:bg-slate-50 cursor-pointer">
               <span className="p-5 rounded-full bg-birdie_purple text-white shadow-lg shadow-purple-200">
                 <FontAwesomeIcon className="h-10 w-10" icon={faDatabase} />

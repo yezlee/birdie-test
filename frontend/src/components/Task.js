@@ -1,0 +1,95 @@
+import React, { useEffect, useState } from "react";
+import { FetchDataFunc } from "../helper/FetchDataFunc";
+import _format_date from "../helper/_format_date";
+import _date_Picker from "../helper/_date_picker";
+import MUIDataTable from "mui-datatables";
+import _date_to_GB_format from "../helper/_date_to_GB_format";
+
+export default function Task() {
+  const [fetchData, setfetchData] = useState([]);
+  const [startDate, setStartDate] = useState(new Date("2019/04/23"));
+  const [endDate, setEndDate] = useState(new Date("2019/04/27"));
+
+  useEffect(() => {
+    const fetchResponse = async () => {
+      const response = await FetchDataFunc(
+        `https://birdie-care-recipients.onrender.com/task_by_date?from=${_format_date(
+          startDate
+        )}&to=${_format_date(endDate)}`
+      );
+      setfetchData(response);
+    };
+
+    fetchResponse();
+  }, [startDate, endDate]);
+
+  let taskData = [];
+  taskData = fetchData.map((e) => e);
+
+  let taskDataForTable = [];
+
+  function formatTaskData() {
+    for (let i = 0; i < taskData.length; i++) {
+      taskDataForTable.push([
+        _date_to_GB_format(
+          taskData[i].timestamp.slice(0, 4),
+          taskData[i].timestamp.slice(5, 7),
+          taskData[i].timestamp.slice(8, 10)
+        ),
+        taskData[i].task_definition_description,
+        taskData[i].task_schedule_note === ""
+          ? "-"
+          : taskData[i].task_schedule_note,
+      ]);
+    }
+
+    return taskDataForTable;
+  }
+
+  // colums for the table
+  const columns = [
+    {
+      name: "date",
+      label: "ㅤDATEㅤ",
+      options: {
+        filter: true,
+        sort: true,
+      },
+    },
+    {
+      name: "task_definition_description",
+      label: "Task Description",
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+    {
+      name: "task_schedule_note",
+      label: "Task Schedule Note",
+      options: {
+        filter: true,
+        sort: false,
+      },
+    },
+  ];
+
+  const options = {
+    filterType: "checkbox",
+  };
+
+  return (
+    <div className="max-w-7xl mx-auto flex-col justify-center items-center sm:px-6 lg:px-8">
+      {/* ctasking function _date_Picker from helper */}
+      {_date_Picker(startDate, endDate, setStartDate, setEndDate)}
+      <div className="w-4/5">
+        <MUIDataTable
+          title={"Task Completed Note"}
+          data={formatTaskData()}
+          columns={columns}
+          options={options}
+        />
+      </div>
+    </div>
+  );
+}

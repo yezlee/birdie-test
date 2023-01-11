@@ -7,7 +7,7 @@ import Medication from "./components/Medication.js";
 import Intake from "./components/Intake.js";
 import Health from "./components/Health.js";
 import GeneralNote from "./components/GeneralNote.js";
-import AllData from "./components/AllData.js";
+import Task from "./components/Task.js";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         <Route path="/medication" element={<Medication />} />
         <Route path="/health" element={<Health />} />
         <Route path="/general" element={<GeneralNote />} />
-        <Route path="/all" element={<AllData />} />
+        <Route path="/task" element={<Task />} />
       </Routes>
     </BrowserRouter>
   );
