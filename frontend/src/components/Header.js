@@ -14,14 +14,11 @@ function classNames(...classes) {
 
 export default function Header() {
   return (
-    <Disclosure
-      as="nav"
-      className="bg-birdie_dark_blue absolute inset-x-0 top-0 w-full"
-    >
+    <Disclosure as="nav" className="bg-birdie_dark_blue w-full font-sans">
       {({ open }) => (
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-20 items-center justify-between">
-            <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+            <div className="flex flex-1 items-center justify-center sm:justify-start">
               {/* logo */}
               <Link to="/">
                 <div className="flex flex-shrink-0 items-center">
@@ -34,16 +31,16 @@ export default function Header() {
               </Link>
               {/* navigation menu */}
               <div className="hidden sm:ml-6 sm:block">
-                <div className="flex space-x-4">
+                <div className="flex space-x-4 font-light">
                   {navigation.map((item) => (
                     <a
                       key={item.name}
                       href={item.href}
                       className={classNames(
                         item.current
-                          ? "text-birdie_light_blue "
+                          ? "text-birdie_light_blue font-medium"
                           : "text-blue-100   hover:bg-birdie_light_dark_blue",
-                        "px-3 py-2 rounded-md text-lg text-white-300 font-thin"
+                        "px-3 py-2 rounded-md tracking-wider text-white-300"
                       )}
                       aria-current={item.current ? "page" : undefined}
                     >
