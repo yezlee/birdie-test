@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
-import MUIDataTable from "mui-datatables";
-
 import {
   _date_to_GB_format,
   _format_date,
   _date_Picker,
   _fetch_data_func,
 } from "../helper";
+import MUIDataTable from "mui-datatables";
 
 export function Task() {
   const [fetchData, setfetchData] = useState([]);
+  // Initialize the date for DatePicker as there are limited data
   const [startDate, setStartDate] = useState(new Date("2019/04/23"));
   const [endDate, setEndDate] = useState(new Date("2019/04/27"));
 
+  // Fetch data
   useEffect(() => {
     const fetchResponse = async () => {
       const response = await _fetch_data_func(
@@ -31,6 +32,7 @@ export function Task() {
 
   let taskDataForTable = [];
 
+  // Generate data from server to display
   function formatTaskData() {
     for (let i = 0; i < taskData.length; i++) {
       taskDataForTable.push([

@@ -15,9 +15,11 @@ ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 
 export function Medication() {
   const [fetchData, setfetchData] = useState([]);
+  // Initialize the date for DatePicker as there are limited data
   const [startDate, setStartDate] = useState(new Date("2019/04/23"));
   const [endDate, setEndDate] = useState(new Date("2019/04/26"));
 
+  // Fetch data
   useEffect(() => {
     const fetchResponse = async () => {
       const response = await _fetch_data_func(
@@ -34,6 +36,7 @@ export function Medication() {
   let medicationData = [];
   medicationData = fetchData.map((e) => e.event_type);
 
+  // Generate data from server to display
   function countMedication() {
     let takenCount = 0;
     let partiallyCount = 0;
@@ -55,6 +58,7 @@ export function Medication() {
     return [takenCount, partiallyCount, maybeCount, notTakenCount];
   }
 
+  // Chart property; data
   const data = {
     labels: [
       "Regular medication taken",

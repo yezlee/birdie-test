@@ -9,9 +9,11 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export function Mood() {
   const [fetchData, setfetchData] = useState([]);
+  // Initialize the date for DatePicker as there are limited data
   const [startDate, setStartDate] = useState(new Date("2019/04/23"));
   const [endDate, setEndDate] = useState(new Date("2019/05/10"));
 
+  // Fetch data
   useEffect(() => {
     const fetchResponse = async () => {
       const response = await _fetch_data_func(
@@ -28,6 +30,7 @@ export function Mood() {
   let moodData = [];
   moodData = fetchData.map((e) => e.mood);
 
+  // Generate data from server to display
   function countMood() {
     let happyCount = 0;
     let okayCount = 0;
@@ -46,7 +49,8 @@ export function Mood() {
     return [happyCount, okayCount, sadCount];
   }
 
-  const moodDataForDoughnut = {
+  // Chart property; data
+  const data = {
     labels: ["Happy", "Okay", "Sad"],
     datasets: [
       {
@@ -73,7 +77,7 @@ export function Mood() {
       {_date_Picker(startDate, endDate, setStartDate, setEndDate)}
 
       <div className="h-1/3 w-1/3">
-        <Pie className="" data={moodDataForDoughnut} />
+        <Pie className="" data={data} />
       </div>
     </div>
   );

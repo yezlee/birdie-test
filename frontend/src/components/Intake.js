@@ -10,9 +10,11 @@ import {
 
 export function Intake() {
   const [fetchData, setfetchData] = useState([]);
+  // Initialize the date for DatePicker as there are limited data
   const [startDate, setStartDate] = useState(new Date("2019/04/23"));
   const [endDate, setEndDate] = useState(new Date("2019/04/26"));
 
+  // Fetch data
   useEffect(() => {
     const fetchResponse = async () => {
       const response = await _fetch_data_func(
@@ -31,6 +33,7 @@ export function Intake() {
 
   let intakeDataForTable = [];
 
+  // Generate data from server to display
   function formatIntakeData() {
     for (let i = 0; i < intakeData.length; i++) {
       intakeData[i].event_type === "food_intake_observation"

@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "react-datepicker/dist/react-datepicker.css";
-
 import {
   _date_to_string,
   _format_date,
@@ -12,19 +10,21 @@ import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
-
 import "react-vertical-timeline-component/style.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouseChimneyMedical,
   faHandHoldingHand,
 } from "@fortawesome/free-solid-svg-icons";
+import "react-datepicker/dist/react-datepicker.css";
 
 export function GeneralNote() {
   const [fetchData, setfetchData] = useState([]);
+  // Initialize the date for DatePicker as there are limited data
   const [startDate, setStartDate] = useState(new Date("2019/04/23"));
   const [endDate, setEndDate] = useState(new Date("2019/04/24"));
 
+  // Fetch data
   useEffect(() => {
     const fetchResponse = async () => {
       const response = await _fetch_data_func(
@@ -61,6 +61,7 @@ export function GeneralNote() {
             date.slice(5, 7) - 1,
             date.slice(8, 10)
           )}
+          {/* Time display */}
           <span className="font-normal text-birdie_light_dark_blue text-base">{` (${date.slice(
             11,
             19

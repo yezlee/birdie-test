@@ -1,5 +1,6 @@
 import DatePicker from "react-datepicker";
 
+// Date Picker function for display
 export function _date_Picker(startDate, endDate, setStartDate, setEndDate) {
   return (
     <div className="grid my-10 items-center">

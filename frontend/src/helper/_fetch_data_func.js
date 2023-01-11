@@ -1,3 +1,4 @@
+// Function for getting data from API URL and return to data object
 export async function _fetch_data_func(apiURL) {
   const fetchApiResponse = await fetch(apiURL, {
     method: "GET",
