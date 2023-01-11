@@ -49,6 +49,7 @@ export default function Intake() {
     return intakeDataForTable;
   }
 
+  // colums for the table
   const columns = [
     {
       name: "date",
