@@ -9,7 +9,7 @@ This is a web site for displaying the information to a family member.
 ## FEATURES
 1. **_Main page_** : Dash board page for route
 
-##### (Every pages have a date picker for selecting the dates; The start date and end date are set up as there are limited dates to choose. )
+##### (Every pages have a date picker for selecting the dates; The start date and end date are set up as there are limited data. Available dates are between 23/04/2019 and 12/05/2019.)
 
 2. **_Intake Obeservation page_** : Get both `fluid_intake_observation` and `food_intake_observation` to display data in **a table**.
 
