@@ -89,7 +89,7 @@ export function Task() {
       {_date_Picker(startDate, endDate, setStartDate, setEndDate)}
       <div className="w-4/5">
         <MUIDataTable
-          title={"Task Completed Note"}
+          title={"Completed Tasks"}
           data={formatTaskData()}
           columns={columns}
           options={options}

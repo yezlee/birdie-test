@@ -6,7 +6,7 @@ import {
   faFaceSmile,
   faHeartPulse,
   faNoteSticky,
-  faDatabase,
+  faListCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
@@ -14,7 +14,7 @@ export default function Main() {
   return (
     <div className="flex-col justify-center h-[calc(100vh-5rem)]">
       <div className="flex justify-center items-center flex-1 mx-auto max-w-7xl h-full px-2 sm:px-6 lg:px-8 py-20 bg-opacity-10">
-        <div className="grid grid-cols-1 md:lg:xl:grid-cols-3 group bg-white shadow-xl shadow-neutral-100 border ">
+        <div className="grid grid-cols-1 md:grid-cols-3 group bg-white shadow-xl shadow-neutral-100 border">
           {/* Intake */}
           <Link to="/intake">
             <div className="p-10 flex flex-col items-center text-center group md:lg:xl:border-r md:lg:xl:border-b hover:bg-slate-50 cursor-pointer">
@@ -23,8 +23,8 @@ export default function Main() {
               </span>
               <p className="text-xl font-medium text-slate-700 mt-3">Intake</p>
               <p className="mt-2 text-sm text-slate-500">
-                Team BrainEdge education is a bunch of highly focused, energetic
-                set of people.
+                See what kind of meals/snacks took and how much volume of fluids
+                are consumed.
               </p>
             </div>
           </Link>
@@ -37,7 +37,7 @@ export default function Main() {
               </span>
               <p className="text-xl font-medium text-slate-700 mt-3">Mood</p>
               <p className="mt-2 text-sm text-slate-500">
-                Know where you stand and what next to do to succeed .
+                Check the graph of what mood is care recipients in days.
               </p>
             </div>
           </Link>
@@ -52,8 +52,8 @@ export default function Main() {
                 Medication
               </p>
               <p className="mt-2 text-sm text-slate-500">
-                Professional Advice for higher education abroad and select the
-                top institutions worldwide.
+                You can check the medication taken information with the polar
+                area chart.
               </p>
             </div>
           </Link>
@@ -66,7 +66,8 @@ export default function Main() {
               </span>
               <p className="text-xl font-medium text-slate-700 mt-3">Health</p>
               <p className="mt-2 text-sm text-slate-500">
-                Yet another year ! Yet another jewel in our crown!
+                Physical and mental type of health observation with the note in
+                the table.
               </p>
             </div>
           </Link>
@@ -78,11 +79,10 @@ export default function Main() {
                 <FontAwesomeIcon className="h-10 w-10" icon={faNoteSticky} />
               </span>
               <p className="text-xl font-medium text-slate-700 mt-3">
-                General note
+                General notes
               </p>
               <p className="mt-2 text-sm text-slate-500">
-                Get Topic-Wise Tests, Section- Wise and mock tests for your
-                preparation.
+                General notes from a caregiver on the timeline.
               </p>
             </div>
           </Link>
@@ -91,13 +91,14 @@ export default function Main() {
           <Link to="/task">
             <div className="p-10 flex flex-col items-center text-center group hover:bg-slate-50 cursor-pointer">
               <span className="p-5 rounded-full bg-birdie_purple text-white shadow-lg shadow-purple-200">
-                <FontAwesomeIcon className="h-10 w-10" icon={faDatabase} />
+                <FontAwesomeIcon className="h-10 w-10" icon={faListCheck} />
               </span>
               <p className="text-xl font-medium text-slate-700 mt-3">
-                All data
+                Completed tasks
               </p>
               <p className="mt-2 text-sm text-slate-500">
-                Visa process by helping you create the necessary documentation
+                Stored all the completed tasks with descriptions and schedule
+                notes.
               </p>
             </div>
           </Link>
