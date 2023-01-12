@@ -22,3 +22,5 @@ app.use(pingController);
 app.listen(port, () => {
   console.log("Server started");
 });
+
+export default app;

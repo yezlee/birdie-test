@@ -9,16 +9,17 @@ const pool = mysql.createPool({
   port: config.port,
 });
 
-const getCon = async () => {
+export const getCon = async () => {
   return await pool.getConnection(async function (err, connection) {
     if (err) throw err;
     connection;
   });
 };
 
+export const connection = await getCon();
+
 // A function for running query and returning data
 async function db(query, params) {
-  const connection = await getCon();
   let [rows, fields] = await connection.query(query, params);
 
   connection.release();

@@ -1,6 +1,7 @@
 import * as express from "express";
 import {
   getAllEvent,
+  getMood,
   getMoodByDate,
   getAllHealthObservationByDate,
   getAllMedicationByDate,
@@ -27,6 +28,14 @@ function tryCatch(data, req, res) {
 // getAllEvent
 pingController.get("/all", async (req, res) => {
   const data = await db(getAllEvent);
+
+  // try, catch
+  tryCatch(data[0], req, res);
+});
+
+// getMood
+pingController.get("/mood", async (req, res) => {
+  const data = await db(getMood);
 
   // try, catch
   tryCatch(data[0], req, res);

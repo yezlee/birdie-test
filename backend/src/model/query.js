@@ -4,6 +4,13 @@ FROM events
 WHERE care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d'
 ORDER BY timestamp;`;
 
+export const getMood = `        
+SELECT payload 
+FROM events 
+WHERE care_recipient_id = 'df50cac5-293c-490d-a06c-ee26796f850d'
+AND event_type = 'mood_observation'
+ORDER BY timestamp;`;
+
 export const getMoodByDate = `        
 SELECT payload 
 FROM events 
