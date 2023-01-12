@@ -22,7 +22,7 @@ export function GeneralNote() {
   const [fetchData, setfetchData] = useState([]);
   // Initialize the date for DatePicker as there are limited data
   const [startDate, setStartDate] = useState(new Date("2019/04/23"));
-  const [endDate, setEndDate] = useState(new Date("2019/04/24"));
+  const [endDate, setEndDate] = useState(new Date("2019/04/28"));
 
   // Fetch data
   useEffect(() => {
@@ -58,7 +58,7 @@ export function GeneralNote() {
           {/* Call function _date_to_string from helper */}
           {_date_to_string(
             date.slice(0, 4),
-            date.slice(5, 7) - 1,
+            date.slice(5, 7),
             date.slice(8, 10)
           )}
           {/* Time display */}
